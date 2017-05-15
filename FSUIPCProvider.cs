@@ -198,13 +198,15 @@ namespace SEMIK1
         {
             try
             {
+                FSUIPCConnection.Close();
                 FSUIPCConnection.Open();
+                /*FSUIPCConnection.Open();
                 connected = true;
                 Logger.Log("Connected to FS");
                 Logger.Log("DLL version:" + FSUIPCConnection.DLLVersion.ToString());
                 mainForm.setStatus("Connected to FS");
                 mainForm.setProgress(false);
-                sendMessage(AppTitle + " is now connected!", 10);
+                sendMessage(AppTitle + " is now connected!", 10);*/
             }
             catch (Exception ex)
             {

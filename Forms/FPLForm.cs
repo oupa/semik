@@ -403,7 +403,15 @@ namespace SEMIK1.Forms
         private string convertAircraft(string orig)
         {
             if (orig.IndexOf('/') >= 0) {
-                return orig.Split('/')[1];
+                String[] spl = orig.Split('/');
+                for (int i = 0; i < spl.Length; i++)
+                {
+                    String s = spl[i];
+                    if (s.Length == 4)
+                    {
+                        return s;
+                    }
+                }
             }
             return orig;
         }

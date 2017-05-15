@@ -319,7 +319,7 @@ namespace SEMIK1
                 wasSimRate = true;
             }
 
-            if (!wasRefuel && !fsData.onGround && (lastFuel + 5) < fsData.fuelTotalWeight) {
+            if (!wasRefuel && !fsData.onGround && (lastFuel + 20) < fsData.fuelTotalWeight) {
                 Logger.LogEvent("REFUEL DETECTED", "Fuel: " + Math.Round(fsData.fuelTotalWeight) + " / Previous: " + Math.Round(lastFuel));
                 LogFlightEvent("Refueling", "Fuel: " + Math.Round(fsData.fuelTotalWeight) + " / Previous: " + Math.Round(lastFuel), 2);
                 wasRefuel = true;

@@ -335,7 +335,11 @@ namespace SEMIK1.Forms
 
         private void connectToSimulatorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!FSUIPCProvider.isConnected()) {
+            if (!FSUIPCProvider.isConnected())
+            {
+                FSUIPCProvider.Connect();
+            } else {
+                FSUIPCProvider.Disconnect();
                 FSUIPCProvider.Connect();
             }
         }

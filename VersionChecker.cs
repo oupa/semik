@@ -8,7 +8,7 @@ namespace SEMIK1
 {
     public class VersionChecker
     {
-        public static int buildVersion = 47;
+        public static int buildVersion = 49;
         public static string status;
 
         public static void CheckVersion() {
