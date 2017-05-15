@@ -15,7 +15,7 @@
 *.lo
 
 # Shared objects (inc. Windows DLLs)
-*.dll
+#*.dll # need for fmodex.dll and FSUIPCClient.dll 's
 *.so
 *.so.*
 *.dylib

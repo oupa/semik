@@ -1,0 +1,207 @@
+﻿CHANGE LOG
+---------------------------
+[verze 1]
+
+- autentifikace pilota, stažení dat o pilotovi (pouze interně, zatím bez vizualizace)
+- stažení flotily
+- zapamatování autentifikace
+
+- pre flight formulář
+* pokud je na síti podaný FPL, umí ho stáhnout (zpoždění cca 5 minut)
+* po zadání departure a arrival icao vyhledá flight iata a zobrazí je ve výběru
+* jinak normálka, po vyplnění iata lze nahrát pasažéry
+* po výběru letadla enabluje tlačítko na zahájení letu (Begin boarding)
+
+- propojení s FS
+* při zadání departure icao kontroluje pozici (že jste tam, kde máte být)
+* zjistí typ letadla a hmotnosti (nevím, jak se to bude chovat u různých addonů, co jsem zkoušel zatím sedělo)
+* zjistí stav (země/let)
+* zjistí parking brake
+* další parametry zatím pouze interně (je jich hodně)
+
+[verze 2]
+- základní tracking a přepínání režimů letu
+- výstup základních informací o letu do logu
+- základní zobrazení detailů pilota (není důležitá funkce)
+- vylepšení formuláře FPL - načtení alternate letišť a jejich nabídnutí (algoritmus je automatický výběr na serveru)
+- velmi primitivní passenger manifest
+
+[verze 3]
+- loguje aktualni pozici na server CSAV
+- zatim neobsahuje zpracovani a odeslani pirepu
+
+[verze 4]
+- oprava nekterych chyb (nedefinovane klapky)
+- zapis flight events (interne)
+- generovani logu kompatibilniho s logy z fsacars kvuli zpetne kompatibilite
+
+[verze 5]
+- vylepsena historie acars messages a sever messages
+
+[verze 6]
+- odesila pirep na server ke zpracovani (server-side je tez nova)
+- uspesne ulozen testovaci let, vc. kompatibilniho pirepu
+
+[verze 7]
+- confirm pri zavreni
+- pri minimalizaci se schova a otevre se pres tray ikonku
+
+[verze 8]
+- oprava chybne posilane souradnice pristani
+
+[verze 9]
+- lepsi chovani FPL form - pri nenalezeni iata vynuluje kombo, totez pri prepnuti z training flight na normalni let
+
+[verze 10]
+- lepsi logovani eventu (je videt cely strom a vice parametru)
+- vymena ikonky a tim padem funkcnost pro win xp
+
+[verze 11]
+- zmena na serveru a odpovidajici uprava klienta
+
+[verze 12]
+- pridani gear a flaps do "FDR"
+- jednoduchy version checker
+
+[verze 13]
+- pridani surface kontroly pri pohybu na zemi a pri pristani
+
+[verze 14]
+- upravy menu
+- pridani prohlizece FDR souboru
+
+[verze 15]
+- upload FDR souboru na server
+- za letu rezim Pokusy s moznosti vyvolat engine failure
+- dokud nedojde k ENG RESTORE, nemel by pak jit motor nahodit, po stisknuti tlacitka ano
+- pridani kontroly max_takeoff_pitch
+- oprava "New flight" po dokonceni letu
+
+[verze 16]
+- stranka s nastavenim aplikace
+- zachytavani screenshotu a jejich odesilani do CSAV TV (vc. filtru na aktivni okno)
+
+[verze 17]
+- pridan vypocet paliva pro divert a souvisejici incidenty (FuelReserveLow / FuelReserveHigh)
+
+[verze 18]
+- oprava chybne detekce aktivniho okna pro CSAV TV
+
+[verze 19]
+- oprava chybneho nastaveni hlasitosti
+- oprava ukladani nastaveni
+- rozdeleni nastaveni na taby
+- moznost aktivovat FDR imaging - pri incidentu se sejme screenshot a ulozi do FDR souboru k pozdejsimu prohlednuti
+
+[verze 20]
+- oprava Exception pri nenalezeni letadla v library
+- oprava nastaveni zvuku a testovani zvuku
+
+[verze 21]
+- oprava špatného výpočtu reserve fuel
+- oprava síťové vrstvy, neměla by se objevovat chyba připojení
+- oprava záznamu obrázku při incidentu
+
+[verze 22]
+- úprava výpočtu reserve fuel
+- jednoduchý prohlížeč profilu FDR
+- oprava při volbě New flight tracking
+
+[verze 23]
+- zrušen prohlížeč profilu
+- oprava prudících hlášek při výpadku internetu
+- možnost opakovat poslání pirepu při výpadku internetu
+
+[verze 24]
+- změna knihovny pro přehrávání zvuků
+- přidání hlášky BeforeTakeoff (napojena na rozsvícení landing lights při pojíždění)
+
+[verze 25]
+- oprava při chybě fmod knihovny (šemík by měl i přesto běžet)
+- pokus o opravu nového acars bez nutnosti vyp/zap
+
+[verze 26]
+- zobrazení hmotnosti cargo
+- úprava pro ČSAV OnDemand
+
+[verze 27]
+- automaticky velká písmena ve FPL
+- tool tip s informacemi o Alternate letišti
+
+[verze 28]
+- změna velikosti obrázku pro ČSAV TV
+- změny incidentů (+ParkingBrakeMoving, +AltimeterUnset, -UnsafeSurface)
+- fix detekce pro povrch MACADAM
+
+[verze 29]
+- uprava logovani - loguje i IAS
+- uprava detekce pro vysky pod hladinou more
+- uprava nastaveni zvukove knihovny
+
+[verze 30]
+- doplnění tlačítka Load Briefing - natáhne let s parametry, které pilot získá ve Flight planneru na webu
+- změna přístupu k přehrávání zvuků (někomu to blbnulo)
+- změna detekce vzletu (opět někomu to blbnulo)
+- změna detekce refuellingu
+
+[verze 31]
+- workaround pro případ špatné detekce pozice (lat,lon = 0)
+
+[verze 32]
+- downloader a updater tratí
+
+[verze 33]
+- vizuální vylepšení downloaderu tratí
+- dialog "Po letu"
+- formulář pro případ divertu
+
+[verze 34]
+- wilco tratě jsou nyní pro B737
+- původní tratě pro A320 prozatím nebudou poskytovány, vzhledem k problémům, které způsobovaly
+
+[verze 35]
+- tratě ve formátu PLN pro FS9/FSX (možné využít pro Wilco Airbus apod.)
+
+[verze 36]
+- možnost zapnout zobrazování varování ve Flight Simulátoru
+- možnost ručně přepnout některé režimy letu
+- možnost ručně ukončit (zrušit) probíhající let
+
+[verze 37]
+- pokus o řešení odpojování v případě, že FSka nestíhá vyřizovat požadavky FSUIPC
+
+[verze 38]
+- grafy v prohlížeči FDR
+- přechod na .NET 4.0
+
+[verze 39]
+- vyšší sample rate při přistání - snad přesnější td_rate záznam
+- záznam místa přistání do databáze pro možné budoucí využití
+
+[verze 40]
+- přidání záznamu headingu při přistání, pro lepší detekci na kterou rwy pilot vlastně přistál
+
+[verze 41]
+- možnost vypnout automatické připojování k simulátoru po spuštění
+- změna serverové url na www.csavirtual.cz
+
+[verze 42]
+- možnost odlogovat se z Šemíka (a tedy změnit pilota)
+- podpora X-Plane 10 (přes XPUIPC www.tosi-online.de)
+
+[verze 43]
+- možnost nastavit si interval, který bude Šemík čekat po přistání a aktivaci parkovací brzdy
+- pokud bude poté parkovací brzda uvolněna před vypršením intervalu, nedojde k ukončení letu a lze pokračovat v pojíždění
+- automatické průběžné ukládání logu na server, pro snazší reporting nedokončených letů
+
+[verze 44]
+- přidán incident typ CriticalPause, při pauze delší než 120 sekund
+
+[verze 45]
+- korektní url encoding hesla a uživatelského jména
+
+[verze 46]
+- oprava url encoding, změna .NET verze na 4.5
+
+[verze 47]
+- ošetření výjimky pokud uživatel nemá .NET 4.5

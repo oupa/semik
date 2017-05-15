@@ -1,0 +1,330 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FSUIPCClient</name>
+    </assembly>
+    <members>
+        <member name="T:FSUIPC.Offset`1">
+            <summary>
+            Represents an item of data that can be read from or written to an FSUIPC offset.
+            </summary>
+            <typeparam name="DataType">The native (.NET) type representing the data held in the FSUIPC offset.<para></para><para>Native .NET types supported are: Byte, Int16, UInt16, Int32, UInt32, Int64, UInt64, Double, Single, String, BitArray</para><para>Depending on the language you are using there may be other ways of referring to these base types.</para><para>E.g. Int16 in VB.NET is also 'Short'.  In C# it's 'short'.</para><para></para>To read/Write raw bytes of any length from FSUIPC use an array of Bytes. (Byte() in VB.NET, byte[] in C#)</typeparam>
+        </member>
+        <member name="M:FSUIPC.Offset`1.#ctor(System.Int32)">
+            <summary>
+            Creates a new Offset that will read from or write to the specified Offset.
+            </summary>
+            <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
+        </member>
+        <member name="M:FSUIPC.Offset`1.#ctor(System.String,System.Int32)">
+            <summary>
+            Creates a new Offset in the specified Group that will read from or write to the specified Offset.
+            </summary>
+            <param name="DataGroupName">The name of the DataGroup to put this Offset into.<para>To process this Offset you must call Process() and pass the GroupName as a parameter.</para></param>
+            <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
+        </member>
+        <member name="M:FSUIPC.Offset`1.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates a Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray and an array of bytes.
+            </summary>
+            <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
+            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray and array of bytes.</param>
+        </member>
+        <member name="M:FSUIPC.Offset`1.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Creates a new Offset that will read from or write to the specified Offset.
+            </summary>
+            <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
+            <param name="WriteOnly">If true, Sets this Offset to only write data.  Its value is never read from FSUIPC.  You can change the setting with the WriteOnly property at any time.</param>        
+        </member>
+        <member name="M:FSUIPC.Offset`1.#ctor(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new Offset in the specified Group that will read from or write to the specified Offset.
+            </summary>
+            <param name="DataGroupName">The name of the DataGroup to put this Offset into.<para>To process this Offset you must call Process() and pass the GroupName as a parameter.</para></param>
+            <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
+            <param name="WriteOnly">If true, Sets this Offset to only write data.  Its value is never read from FSUIPC.  You can change the setting with the WriteOnly property at any time.</param>        
+        </member>
+        <member name="M:FSUIPC.Offset`1.#ctor(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray and an array of bytes.
+            </summary>
+            <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
+            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray and array of bytes.</param>
+            <param name="WriteOnly">If true, Sets this Offset to only write data.  Its value is never read from FSUIPC.  You can change the setting with the WriteOnly property at any time.</param>        
+        </member>
+        <member name="M:FSUIPC.Offset`1.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates a new Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray and an array of bytes.
+            </summary>
+            <param name="DataGroupName">The name of the DataGroup to put this Offset into.<para>To process this Offset you must call Process() and pass the GroupName as a parameter.</para></param>
+            <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
+            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray and array of bytes.</param>
+        </member>
+        <member name="M:FSUIPC.Offset`1.#ctor(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new Offset in the specified group that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray and an array of bytes.
+            </summary>
+            <param name="DataGroupName">The name of the DataGroup to put this Offset into.<para>To process this Offset you must call Process() and pass the GroupName as a parameter.</para></param>
+            <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
+            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray and array of bytes.</param>
+            <param name="WriteOnly">If true, Sets this Offset to only write data.  Its value is never read from FSUIPC.  You can change the setting with the WriteOnly property at any time.</param>        
+        </member>
+        <member name="M:FSUIPC.Offset`1.Disconnect">
+            <summary>
+            Immediately disconnects this Offset from FSUIPC.  The value of this Offset will no longer be updated or written during Process() calls.  Use Reconnect() to start updating again.
+            </summary>
+            
+        </member>
+        <member name="M:FSUIPC.Offset`1.Disconnect(System.Boolean)">
+            <summary>
+            Disconnects this Offset from the FSUIPCConnection class.  The value of this Offset will no longer be updated or written during Process() calls.  Use Reconnect() to start updating again.        
+            </summary>
+            <param name="AfterNextProcess">If true, the Offset will not be disconnected until after you call Process().  If false the Offset is disconnected immediately.</param>
+        </member>
+        <member name="M:FSUIPC.Offset`1.Reconnect">
+            <summary>
+            Permenently reconnects this Offset to FSUIPC.  The value of this Offset will be read/written during subsequent Process() calls.        
+            </summary>
+        </member>
+        <member name="M:FSUIPC.Offset`1.Reconnect(System.Boolean)">
+            <summary>
+            Reconnects this Offset to FSUIPC.  The value of this Offset will be updated/written during subsequent Process() calls.
+            </summary>
+            <param name="ForNextProcessOnly">If true, the Offset is reconnected only for the next Process() call.  After that it's disconnected again.  If false, the Offset is reconnected until you call Disconnect().</param>
+        </member>
+        <member name="P:FSUIPC.Offset`1.Address">
+            <summary>
+            The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.Offset`1.Value">
+            <summary>
+            The data from the FSUIPC Offset obtained from the last Process(). <para></para> To write a value to the FSUIPC Offset, assign the new value to this property.  It will be written to FSUIPC during the next Process().
+            </summary>
+        </member>
+        <member name="P:FSUIPC.Offset`1.IsConnected">
+            <summary>
+            Indicates if this Offset is currently 'Connected'.  Offsets that are disconnected will not be updated or have changes written to FSUIPC when Process() is run.
+            This is read-only.  To connect or disconnect an Offset call the Connect() or Disconnect() methods.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.Offset`1.WriteOnly">
+            <summary>
+            Indicates that this Offset is to be Write-Only.  While marked as Write-Only the value of this Offset will never be read from FSUIPC.  If you change the value of this Offset the new value will be written to FSUIPC on the next process.
+            </summary>
+        </member>
+        <member name="T:FSUIPC.FlightSim">
+            <summary>
+            Flight Simulator Version
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FlightSim.Any">
+            <summary>
+            Any version of Flight Sim
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FlightSim.FS98">
+            <summary>
+            Microsoft Flight Simulator 98
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FlightSim.FS2K">
+            <summary>
+            Microsoft Flight Simulator 2000
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FlightSim.CFS2">
+            <summary>
+            Microsoft Combat Flight Simulator 2
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FlightSim.CFS1">
+            <summary>
+            Microsoft Combat Flight Simulator 1
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FlightSim.FLY">
+            <summary>
+            Fly! by Terminal Velocity.  (I don't think this works).
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FlightSim.FS2K2">
+            <summary>
+            Microsoft Flight Simulator 2002
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FlightSim.FS2K4">
+            <summary>
+            Microsoft Flight Simulator 2004 (A Century of Flight)
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FlightSim.FSX">
+            <summary>
+            Microsoft Flight Simulator X
+            </summary>
+        </member>
+        <member name="T:FSUIPC.FSUIPCError">
+            <summary>
+            The 'traditional' error codes returned by the C version of the FSUIPC Client SDK.  These error codes usually get returned in a variable called 'dwResult'.
+            In this library, these error codes are returned in a .NET exception called FSUIPCClientException.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_OK">
+            <summary>
+            No error.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_OPEN">
+            <summary>
+            Attempt to Open() when connection is already open.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_NOFS">
+            <summary>
+            Cannot link to FSUIPC or WideClient
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_REGMSG">
+            <summary>
+            Failed to Register common message with Windows
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_ATOM">
+            <summary>
+            Failed to create Atom for mapping filename
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_MAP">
+            <summary>
+            Failed to create a file mapping object
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_VIEW">
+            <summary>
+            Failed to open a view to the file map
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_VERSION">
+            <summary>
+            Incorrect version of FSUIPC, or not FSUIPC.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_WRONGFS">
+            <summary>
+            Flight Sim is not version requested by this application.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_NOTOPEN">
+            <summary>
+            Attempted to call Process() but the FSUIPC link has not been opened.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_NODATA">
+            <summary>
+            Call cannot execute: no requests accumulated
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_TIMEOUT">
+            <summary>
+            IPC SendMessage timed out (all retries)
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_SENDMSG">
+            <summary>
+            IPC SendMessage failed (all retries)
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_DATA">
+            <summary>
+            IPC request contains bad data
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_RUNNING">
+            <summary>
+            Wrong version of FSUIPC.  Can also occur if running on WideClient but FSUIPC is not running on server.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_SIZE">
+            <summary>
+            Read or Write request cannot be added to the shared memory file as the file is full.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FSUIPCError.FSUIPC_ERR_WRITE_OVERFLOW">
+            <summary>
+            Tried to write a string or byte array that was longer than the declared length of this Offset.
+            </summary>
+        </member>
+        <member name="T:FSUIPC.FSUIPCConnection">
+            <summary>
+            A class that handles communication and data transfer to and from Pete Dowson's FSUIPC or WideFS.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.FSUIPCConnection.Open">
+            <summary>
+            Opens communication to FSUIPC or WideFS.  Call this once when your application starts.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.FSUIPCConnection.Open(FSUIPC.FlightSim)">
+            <summary>
+            Opens communication to FSUIPC or WideFS.  Call this once when your application starts.
+            </summary>
+            <param name="RequiredFlightSimVersion">Specify a version of Flight Sim if you want to limit your application to run only on that version.</param>
+        </member>
+        <member name="M:FSUIPC.FSUIPCConnection.DisconnectGroup(System.String)">
+            <summary>
+            Use DeleteGroup() instead.  Does the same thing but is a better name
+            </summary>
+            <param name="groupName"></param>
+        </member>
+        <member name="M:FSUIPC.FSUIPCConnection.DeleteGroup(System.String)">
+            <summary>
+            Deletes an entire group of Offsets from the FSUIPCConnection class.  Process() can no longer be called on for this group.  Only use this method if you will never need to use the offsets in the group again.
+            </summary>
+            <param name="groupName">The name of the Group you want to delete.</param>
+        </member>
+        <member name="M:FSUIPC.FSUIPCConnection.Close">
+            <summary>
+            Closes the connection with FSUIPC or WideFS and cleans up the memory used.<para>Please call this when your application quits.  The FSUIPC interface  uses unmanaged  memory for communication.  The .NET garbage collection cannot clean this up for you.</para>
+            </summary>
+        </member>
+        <member name="M:FSUIPC.FSUIPCConnection.Process">
+            <summary>
+            Processes all the Offsets in the default group.  To process a specific group of Offsets pass the name of the Group as a parameter.<para>All Offsets will either have their value updated from FSUIPC, or have their value written to FSUIPC as appropriate.</para>
+            </summary>
+        </member>
+        <member name="M:FSUIPC.FSUIPCConnection.Process(System.String)">
+            <summary>
+            Processes all the Offsets in the default group.  To process a specific group of Offsets pass the name of the Group as a parameter.<para>All Offsets will either have their value updated from FSUIPC, or have their value written to FSUIPC as appropriate.</para>
+            </summary>
+            <param name="GroupName">The name of the Group to process.</param>
+        </member>
+        <member name="P:FSUIPC.FSUIPCConnection.OptimiseIPCFile">
+            <summary>
+            Turns the IPC file optimisations on or off.  If set to true, adjacent offsets requests will be joined to form a single read request in the IPC data exchange file.  By default this is set to False.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FSUIPCConnection.DLLVersion">
+            <summary>
+            Returns the version of the FSUIPC Client DLL.
+            </summary>
+        </member>
+        <member name="T:FSUIPC.FSUIPCException">
+            <summary>
+            A exception that gets thrown if an error occurs during an FSUIPC operation.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.FSUIPCException.#ctor(FSUIPC.FSUIPCError,System.String)">
+            <summary>
+            Creates a new FSUIPCClientException
+            </summary>
+            <param name="FSUIPCErrorCode">The 'traditional' error codes returned by the C version of the FSUIPC Client SDK.</param>
+            <param name="Message">The text describing the error.</param>
+        </member>
+        <member name="P:FSUIPC.FSUIPCException.FSUIPCErrorCode">
+            <summary>
+            The 'traditional' error codes returned by the C version of the FSUIPC Client SDK.
+            </summary>
+        </member>
+    </members>
+</doc>
