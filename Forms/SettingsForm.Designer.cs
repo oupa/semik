@@ -53,15 +53,18 @@
             this.refreshUpDown = new System.Windows.Forms.NumericUpDown();
             this.useTVCheckbox = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.parkingBrakeTimeout = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.AutoConnectCheckbox = new System.Windows.Forms.CheckBox();
             this.WarningsCheckbox = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.fdrImagingCheckbox = new System.Windows.Forms.CheckBox();
             this.testerCheckbox = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.parkingBrakeTimeout = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
+            this.API = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.webroot = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).BeginInit();
@@ -69,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.refreshUpDown)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.parkingBrakeTimeout)).BeginInit();
+            this.API.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeBtn
@@ -90,6 +94,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.API);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -216,6 +221,7 @@
             // 
             resources.ApplyResources(this.keywordTxt, "keywordTxt");
             this.keywordTxt.Name = "keywordTxt";
+            this.keywordTxt.TextChanged += new System.EventHandler(this.keywordTxt_TextChanged);
             // 
             // label2
             // 
@@ -268,6 +274,31 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // parkingBrakeTimeout
+            // 
+            this.parkingBrakeTimeout.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            resources.ApplyResources(this.parkingBrakeTimeout, "parkingBrakeTimeout");
+            this.parkingBrakeTimeout.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.parkingBrakeTimeout.Name = "parkingBrakeTimeout";
+            // 
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
@@ -302,30 +333,23 @@
             this.testerCheckbox.Name = "testerCheckbox";
             this.testerCheckbox.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // API
             // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
+            this.API.Controls.Add(this.webroot);
+            this.API.Controls.Add(this.label11);
+            resources.ApplyResources(this.API, "API");
+            this.API.Name = "API";
+            this.API.UseVisualStyleBackColor = true;
             // 
-            // parkingBrakeTimeout
+            // label11
             // 
-            this.parkingBrakeTimeout.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            resources.ApplyResources(this.parkingBrakeTimeout, "parkingBrakeTimeout");
-            this.parkingBrakeTimeout.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.parkingBrakeTimeout.Name = "parkingBrakeTimeout";
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
             // 
-            // label10
+            // webroot
             // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
+            resources.ApplyResources(this.webroot, "webroot");
+            this.webroot.Name = "webroot";
             // 
             // SettingsForm
             // 
@@ -350,6 +374,8 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.parkingBrakeTimeout)).EndInit();
+            this.API.ResumeLayout(false);
+            this.API.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -389,5 +415,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown parkingBrakeTimeout;
+        private System.Windows.Forms.TabPage API;
+        private System.Windows.Forms.TextBox webroot;
+        private System.Windows.Forms.Label label11;
     }
 }

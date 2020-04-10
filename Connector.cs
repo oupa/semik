@@ -17,13 +17,12 @@ namespace SEMIK1
     public class Connector
     {
         public static MainForm mainForm;
-        private static String weburl = "http://www.csavirtual.cz";
 
         public static XmlNodeList GetNearestAirport(double latitude, double longitude)
         {
             string args = "lat=" + latitude;
             args += "&lon=" + longitude;
-            string uri = weburl + "/XML/GetNearestAirport.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/GetNearestAirport.php";
             try
             {
                 string response = SemikRequest(args, uri, "GetNearestAirport", true);
@@ -57,7 +56,7 @@ namespace SEMIK1
         public static XmlNodeList GetAlternates(string icao)
         {
             string args = "icao=" + icao;
-            string uri = weburl + "/XML/GetAlternates.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/GetAlternates.php";
             try
             {
                 string response = SemikRequest(args, uri, "GetAlternates", true);
@@ -92,7 +91,7 @@ namespace SEMIK1
         {
             string args = "iata=" + iata;
             args += "&limit=" + limit;
-            string uri = weburl + "/XML/GetPax.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/GetPax.php";
             try
             {
                 string response = SemikRequest(args, uri, "GetPax", true);
@@ -130,7 +129,7 @@ namespace SEMIK1
             string args = "";
             args += "pid=" + pid;
             args += "&auth=" + auth_code;
-            string uri = weburl + "/XML/GetBriefing.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/GetBriefing.php";
             try
             {
                 string response = SemikRequest(args, uri, "GetBriefing", true);
@@ -177,7 +176,7 @@ namespace SEMIK1
                 args += "&auth=" + auth_code;
                 args += "&auth_method=pre_authentified";
             }
-            string uri = weburl + "/XML/SemikLogin.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/SemikLogin.php";
             try
             {
                 string response = SemikRequest(args, uri, "GetLogin", true);
@@ -223,7 +222,7 @@ namespace SEMIK1
         public static XmlNodeList GetIata(string departure, string arrival)
         { 
             string args = "departure=" + departure + "&arrival=" + arrival + "&pid=" + mainForm.pilot.pid;
-            string uri = weburl + "/XML/GetIata.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/GetIata.php";
             try
             {
                 string response = SemikRequest(args, uri, "GetIata", true);
@@ -263,7 +262,7 @@ namespace SEMIK1
             args += "&lat=" + lat;
             args += "&lon=" + lon;
             args += "&alt=" + alt;
-            string uri = weburl + "/XML/IsAtAirport.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/IsAtAirport.php";
             try
             {
                 string response = SemikRequest(args, uri, "CheckDepartureAirport", true);
@@ -297,7 +296,7 @@ namespace SEMIK1
         public static XmlNodeList GetCompanyRoutes()
         {
             string args = "";
-            string uri = weburl + "/XML/GetCompanyRoutes.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/GetCompanyRoutes.php";
             try
             {
                 string response = SemikRequest(args, uri, "GetCompanyRoutes", true);
@@ -331,7 +330,7 @@ namespace SEMIK1
 
         public static XmlElement GetAirport(string icao) {
             string args = "icao=" + icao;
-            string uri = weburl + "/XML/GetAirport.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/GetAirport.php";
             try
             {
                 string response = SemikRequest(args, uri, "GetAirport", true);
@@ -373,7 +372,7 @@ namespace SEMIK1
             else {
                 args += "ivao_id=" + mainForm.pilot.ivao_id;
             }
-            string uri = weburl + "/XML/GetOnlinePilot.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/GetOnlinePilot.php";
             try
             {
                 string response = SemikRequest(args, uri, "GetOnlinePilot", true);
@@ -409,7 +408,7 @@ namespace SEMIK1
 
         public static void SendPirepTemp(string args)
         {
-            string uri = weburl + "/XML/ReceivePirepTemp.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/ReceivePirepTemp.php";
             try
             {
                 string response = SemikRequest(args, uri, "SendPirepTemp", false);
@@ -429,7 +428,7 @@ namespace SEMIK1
 
         public static XmlElement SendPirep(string args)
         {
-            string uri = weburl + "/XML/ReceivePirep.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/ReceivePirep.php";
             try
             {
                 string response = SemikRequest(args, uri, "SendPirep", false);
@@ -488,7 +487,7 @@ namespace SEMIK1
                 args += "&tracking_id=" + tracking_id;
             }
 
-            string uri = weburl + "/XML/PositionUpdate.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/PositionUpdate.php";
             try
             {
                 string response = SemikRequest(args, uri, "PositionUpdate", false);
@@ -524,7 +523,7 @@ namespace SEMIK1
         public static string CheckVersion()
         {
             string args = "";
-            string uri = weburl + "/XML/CheckVersion.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/CheckVersion.php";
             try
             {
                 string response = SemikRequest(args, uri, "CheckVersion", true);
@@ -567,7 +566,7 @@ namespace SEMIK1
             args += "&lon=" + longitude.ToString();
             args += "&duration=" + duration;
 
-            string uri = weburl + "/XML/ReportDivert.php";
+            string uri = Properties.Settings.Default.weburl + "/XML/ReportDivert.php";
             try
             {
                 string response = SemikRequest(args, uri, "SendDivertReport", true);
@@ -602,6 +601,7 @@ namespace SEMIK1
         public static bool UploadTV(string tracking_id, string filename, string csv) {
             try
             {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 System.Net.WebClient client = new System.Net.WebClient();
                 client.Headers.Add("Content-Type", "binary/octet-stream");
                 string query = "?pid=" + mainForm.pilot.pid;
@@ -609,7 +609,7 @@ namespace SEMIK1
                 query += "&tracking_id=" + tracking_id;
                 query += "&filename=" + filename;
                 query += "&csv=" + csv;
-                bool response = ParseUploadTV(client.UploadFile(weburl + "/XML/UploadTV.php" + query, "POST", filename));
+                bool response = ParseUploadTV(client.UploadFile(Properties.Settings.Default.weburl + "/XML/UploadTV.php" + query, "POST", filename));
                 return response;
             }
             catch (Exception e) {
@@ -642,13 +642,14 @@ namespace SEMIK1
         public static bool UploadFDR(string pirep_id, string filename) {
             try
             {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 System.Net.WebClient client = new System.Net.WebClient();
                 client.Headers.Add("Content-Type", "binary/octet-stream");
                 string query = "?pid=" + mainForm.pilot.pid;
                 query += "&auth=" + mainForm.pilot.auth_code;
                 query += "&pirep_id=" + pirep_id;
                 query += "&filename=" + filename;
-                bool response = ParseUploadFDR(client.UploadFile(weburl + "/XML/UploadFDR.php" + query, "POST", filename));
+                bool response = ParseUploadFDR(client.UploadFile(Properties.Settings.Default.weburl + "/XML/UploadFDR.php" + query, "POST", filename));
                 return response;
             }
             catch (Exception e) {
@@ -682,6 +683,7 @@ namespace SEMIK1
         {
             try
             {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 StreamReader reader;
                 Stream dataStream;
                 WebResponse response;

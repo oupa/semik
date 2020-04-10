@@ -491,14 +491,7 @@ namespace SEMIK1
                             FSUIPCProvider.sendMessage("Flight will be finished in " + (Properties.Settings.Default.parking_brake_timeout - timeout).ToString() + " seconds", 1);
                         }
                         else {
-                            changeFlightMode(9, true);
-                            Logger.LogEvent("GATE", "Arrived at gate");
-                            LogFlightEvent("BlockOn", "", 1);
-                            LogPosition();
-                            LogWeights();
-                            StopTimers();
-                            CheckFuelCalculations();
-                            acarsForm.disableButtons();
+                            endFlight();
                         }
                     }
                     else if (timeoutRunning && !fsData.parkingBrake) {
@@ -507,6 +500,18 @@ namespace SEMIK1
                     }
                 break;
             }
+        }
+
+        public static void endFlight()
+        {
+            changeFlightMode(9, true);
+            Logger.LogEvent("GATE", "Arrived at gate");
+            LogFlightEvent("BlockOn", "", 1);
+            LogPosition();
+            LogWeights();
+            StopTimers();
+            CheckFuelCalculations();
+            acarsForm.disableButtons();
         }
         
         private static double AddDistance()

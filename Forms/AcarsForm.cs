@@ -173,5 +173,10 @@ namespace SEMIK1.Forms
         {
             FSUIPCProvider.Reconnect();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FlightTracking.endFlight();
+        }
     }
 }

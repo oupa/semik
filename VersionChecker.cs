@@ -8,7 +8,7 @@ namespace SEMIK1
 {
     public class VersionChecker
     {
-        public static int buildVersion = 49;
+        public static int buildVersion = 51;
         public static string status;
 
         public static void CheckVersion() {
@@ -20,7 +20,7 @@ namespace SEMIK1
                 status += "Open download page now?";
                 DialogResult result = MessageBox.Show(status, "Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes) {
-                    System.Diagnostics.Process.Start("http://www.csavirtual.cz/upload/semik/aktualni/semik.zip");
+                    System.Diagnostics.Process.Start("https://www.csavirtual.cz/upload/semik/aktualni/semik.zip");
                 }
             }
         }

@@ -43,6 +43,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ACARSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startNewACARSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectToSimulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FDRMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFDRFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeFDRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +55,6 @@
             this.socketCommToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.connectToSimulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -172,6 +172,13 @@
             this.startNewACARSToolStripMenuItem.Text = "Start new flight";
             this.startNewACARSToolStripMenuItem.Click += new System.EventHandler(this.startNewACARSToolStripMenuItem_Click);
             // 
+            // connectToSimulatorToolStripMenuItem
+            // 
+            this.connectToSimulatorToolStripMenuItem.Name = "connectToSimulatorToolStripMenuItem";
+            this.connectToSimulatorToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.connectToSimulatorToolStripMenuItem.Text = "Connect to simulator";
+            this.connectToSimulatorToolStripMenuItem.Click += new System.EventHandler(this.connectToSimulatorToolStripMenuItem_Click);
+            // 
             // FDRMenuItem
             // 
             this.FDRMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -214,7 +221,6 @@
             // 
             // settingsToolStripMenuItem
             // 
-            this.settingsToolStripMenuItem.Enabled = false;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 19);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -259,13 +265,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
-            // 
-            // connectToSimulatorToolStripMenuItem
-            // 
-            this.connectToSimulatorToolStripMenuItem.Name = "connectToSimulatorToolStripMenuItem";
-            this.connectToSimulatorToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.connectToSimulatorToolStripMenuItem.Text = "Connect to simulator";
-            this.connectToSimulatorToolStripMenuItem.Click += new System.EventHandler(this.connectToSimulatorToolStripMenuItem_Click);
             // 
             // MainForm
             // 

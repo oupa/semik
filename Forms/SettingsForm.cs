@@ -38,6 +38,7 @@ namespace SEMIK1.Forms
             this.WarningsCheckbox.Checked = Properties.Settings.Default.display_warnings;
             this.AutoConnectCheckbox.Checked = Properties.Settings.Default.auto_connect;
             this.parkingBrakeTimeout.Value = Properties.Settings.Default.parking_brake_timeout;
+            this.webroot.Text = Properties.Settings.Default.weburl;
         }
 
         private bool SaveSettings() {
@@ -58,6 +59,7 @@ namespace SEMIK1.Forms
             Properties.Settings.Default.display_warnings = this.WarningsCheckbox.Checked;
             Properties.Settings.Default.auto_connect = this.AutoConnectCheckbox.Checked;
             Properties.Settings.Default.parking_brake_timeout = (int)this.parkingBrakeTimeout.Value;
+            Properties.Settings.Default.weburl = this.webroot.Text;
             Properties.Settings.Default.Save();
             SoundFactory.SetVolume(this.volumeBar.Value);
             return true;
@@ -101,6 +103,11 @@ namespace SEMIK1.Forms
         private void volumeBar_ValueChanged_1(object sender, EventArgs e)
         {
             SoundFactory.SetVolume(this.volumeBar.Value);
+        }
+
+        private void keywordTxt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -75,7 +75,7 @@ namespace SEMIK1.Forms
             this.helpToolStripMenuItem.Enabled = false;
             this.startNewACARSToolStripMenuItem.Enabled = false;
             this.ACARSMenuItem.Enabled = false;
-            this.settingsToolStripMenuItem.Enabled = false;
+            this.settingsToolStripMenuItem.Enabled = true;
             this.companyRoutesToolStripMenuItem.Enabled = false;
             this.FDRMenuItem.Enabled = false;
 

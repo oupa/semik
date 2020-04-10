@@ -65,5 +65,8 @@
     <Setting Name="parking_brake_timeout" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="weburl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://www.csavirtual.cz</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
